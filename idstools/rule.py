@@ -90,6 +90,10 @@ class Rule(dict):
         self["enabled"] = enabled
         self["action"] = action
         self["direction"] = None
+        self["source_addr"] = None
+        self["source_port"] = None
+        self["dest_addr"] = None
+        self["dest_port"] = None
         self["group"] = group
         self["gid"] = 1
         self["sid"] = None
@@ -270,6 +274,10 @@ def parse(buf, group=None):
 
     rule = Rule(enabled=enabled, action=action, group=group)
     rule["direction"] = direction
+    rule["source_addr"] = source_addr
+    rule["source_port"] = source_port
+    rule["dest_addr"] = dest_addr
+    rule["dest_port"] = dest_port
     rule["header"] = header
 
     options = m.group("options")
